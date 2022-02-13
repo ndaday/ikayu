@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/ddaydevm/public_html/
+    - /bin/cp -r ./public/* $DEPLOYPATH
+    - /bin/cp ./public/js/* $DEPLOYPATH/js
+    - /bin/cp ./public/css/* $DEPLOYPATH/css
