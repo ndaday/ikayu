@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductCategory;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductCategoryRequest;
 use Illuminate\Http\Request;
+use App\Models\ProductCategory;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\ProductCategoryRequest;
 
 class ProductCategoryController extends Controller
 {
@@ -39,6 +40,7 @@ class ProductCategoryController extends Controller
                 })
                 ->rawColumns(['action'])
                 ->make();
+            DB::unprepared("ALTER TABLE product_categories AUTO_INCREMENT = 1;");
         }
 
         return view('pages.dashboard.category.index');
@@ -117,7 +119,7 @@ class ProductCategoryController extends Controller
      */
     public function destroy(ProductCategory $category)
     {
-        $category->delete();
+        $category->forceDelete();
 
         return redirect()->route('dashboard.category.index');
     }
