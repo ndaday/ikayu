@@ -52,7 +52,8 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        DB::statement("ALTER SEQUENCE product_categories_id_seq RESTART WITH max('id')+1;");
+        $max = DB::table('product_categories')->max('id') + 1;
+        DB::statement("ALTER SEQUENCE product_categories_id_seq RESTART WITH $max;");
         return view('pages.dashboard.category.create');
     }
 
