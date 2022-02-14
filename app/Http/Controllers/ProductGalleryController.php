@@ -57,7 +57,7 @@ class ProductGalleryController extends Controller
         DB::statement("ALTER SEQUENCE product_galleries_id_seq RESTART WITH $max;");
 
         //sql
-        DB::statement("ALTER TABLE product_galleries AUTO_INCREMENT = 0;");
+        // DB::statement("ALTER TABLE product_galleries AUTO_INCREMENT = 0;");
 
         return view('pages.dashboard.gallery.create', compact('product'));
     }
