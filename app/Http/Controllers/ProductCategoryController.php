@@ -52,7 +52,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        DB::statement("ALTER TABLE product_categories AUTO_INCREMENT = 0;");
+        DB::statement("ALTER SEQUENCE product_categories_id_seq RESTART WITH 0;");
         return view('pages.dashboard.category.create');
     }
 
