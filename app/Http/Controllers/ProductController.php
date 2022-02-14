@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use Yajra\DataTables\Facades\DataTables;
@@ -126,6 +127,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->forceDelete();
+
+        DB::statement("ALTER TABLE products AUTO_INCREMENT = 1;");
 
         return redirect()->route('dashboard.product.index');
     }
