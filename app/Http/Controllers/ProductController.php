@@ -128,7 +128,7 @@ class ProductController extends Controller
     {
         $product->forceDelete();
 
-        DB::statement("ALTER TABLE products AUTO_INCREMENT = 1;");
+        DB::statement("ALTER TABLE products AUTO_INCREMENT = 0;");
 
         return redirect()->route('dashboard.product.index');
     }
