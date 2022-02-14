@@ -52,7 +52,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        DB::statement("ALTER TABLE products AUTO_INCREMENT = 1;");
+        DB::statement("ALTER TABLE product_categories AUTO_INCREMENT = 0;");
         return view('pages.dashboard.category.create');
     }
 
@@ -120,8 +120,6 @@ class ProductCategoryController extends Controller
     public function destroy(ProductCategory $category)
     {
         $category->forceDelete();
-
-        DB::statement("ALTER TABLE product_categories AUTO_INCREMENT = 0;");
 
         return redirect()->route('dashboard.category.index');
     }

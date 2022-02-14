@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ProductGallery;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\ProductGalleryRequest;
@@ -51,6 +52,7 @@ class ProductGalleryController extends Controller
      */
     public function create(Product $product)
     {
+        DB::statement("ALTER TABLE product_galleries AUTO_INCREMENT = 0;");
         return view('pages.dashboard.gallery.create', compact('product'));
     }
 
