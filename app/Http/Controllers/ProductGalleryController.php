@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\ProductGalleryRequest;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProductGalleryController extends Controller
 {
@@ -53,11 +54,11 @@ class ProductGalleryController extends Controller
     public function create(Product $product)
     {
         //pgsql
-        $max = DB::table('product_galleries')->max('id') + 1;
-        DB::statement("ALTER SEQUENCE product_galleries_id_seq RESTART WITH $max;");
+        // $max = DB::table('product_galleries')->max('id') + 1;
+        // DB::statement("ALTER SEQUENCE product_galleries_id_seq RESTART WITH $max;");
 
         //sql
-        // DB::statement("ALTER TABLE product_galleries AUTO_INCREMENT = 0;");
+        DB::statement("ALTER TABLE product_galleries AUTO_INCREMENT = 0;");
 
         return view('pages.dashboard.gallery.create', compact('product'));
     }
@@ -70,21 +71,29 @@ class ProductGalleryController extends Controller
      */
     public function store(ProductGalleryRequest $request, Product $product)
     {
-        $files = $request->file('files');
+        // $files = $request->file('files');
 
-        if ($request->hasFile('files')) {
-            foreach ($files as $file) {
-                $path = $file->store('public/gallery');
+        // if ($request->hasFile('files')) {
+        //     foreach ($files as $file) {
+        //         $path = $file->store('public/gallery');
+        //         ProductGallery::create([
+        //             'products_id' => $product->id,
+        //             'url' => $path
+        //         ]);
+        //     }
+        // }
+        $files = cloudinary()->upload($request->file('file')->getRealPath())->getSecurePath();
 
+ 
                 ProductGallery::create([
                     'products_id' => $product->id,
-                    'url' => $path
+                    'url' => $files
                 ]);
-            }
-        }
 
         return redirect()->route('dashboard.product.gallery.index', $product->id);
     }
+
+
 
     /**
      * Display the specified resource.

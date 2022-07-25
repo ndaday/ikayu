@@ -53,11 +53,11 @@ class ProductCategoryController extends Controller
     public function create()
     {
         //pgsql
-        $max = DB::table('product_categories')->max('id') + 1;
-        DB::statement("ALTER SEQUENCE product_categories_id_seq RESTART WITH $max;");
+        // $max = DB::table('product_categories')->max('id') + 1;
+        // DB::statement("ALTER SEQUENCE product_categories_id_seq RESTART WITH $max;");
 
         //sql
-        // DB::statement("ALTER TABLE product_categories AUTO_INCREMENT = 0;");
+        DB::statement("ALTER TABLE product_categories AUTO_INCREMENT = 0;");
 
         return view('pages.dashboard.category.create');
     }
@@ -126,6 +126,9 @@ class ProductCategoryController extends Controller
     public function destroy(ProductCategory $category)
     {
         $category->forceDelete();
+
+        //sql
+        DB::statement("ALTER TABLE product_categories AUTO_INCREMENT = 0;");
 
         return redirect()->route('dashboard.category.index');
     }

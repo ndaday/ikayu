@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductGalleryController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\FileUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ use App\Http\Controllers\ProductCategoryController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::name('dashboard.')->prefix('dashboard')->group(function () {
@@ -37,6 +41,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
             Route::resource('user', UserController::class)->only([
                 'index', 'edit', 'update', 'destroy'
             ]);
+            
         });
     });
 });

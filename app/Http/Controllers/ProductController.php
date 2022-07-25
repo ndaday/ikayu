@@ -58,11 +58,11 @@ class ProductController extends Controller
     public function create()
     {
         //pgsql
-        $max = DB::table('products')->max('id') + 1;
-        DB::statement("ALTER SEQUENCE products_id_seq RESTART WITH $max;");
+        // $max = DB::table('products')->max('id') + 1;
+        // DB::statement("ALTER SEQUENCE products_id_seq RESTART WITH $max;");
 
         //sql
-        // DB::statement("ALTER TABLE products AUTO_INCREMENT = 0;");
+        DB::statement("ALTER TABLE products AUTO_INCREMENT = 0;");
 
         $categories = ProductCategory::all();
         return view('pages.dashboard.product.create', compact('categories'));
