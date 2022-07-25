@@ -140,7 +140,7 @@ class ProductGalleryController extends Controller
         require "cloudinary.php";
         require "api.php";
         $api = new \Cloudinary\Api();
-        $result = $api->destroy($asset_id)
+        $gallery = $api->destroy($asset_id)
 
         // $gallery->forceDelete();
 
