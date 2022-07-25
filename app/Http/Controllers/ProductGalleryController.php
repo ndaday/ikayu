@@ -137,8 +137,6 @@ class ProductGalleryController extends Controller
      */
     public function destroy(ProductGallery $gallery)
     {
-        require "cloudinary.php";
-        require "uploader.php";
         $api = new \Cloudinary\Api();
         $gallery = $api->destroy($asset_id)->forceDelete();
 
