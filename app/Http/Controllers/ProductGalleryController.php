@@ -11,7 +11,7 @@ use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\ProductGalleryRequest;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
-require "cloudinary.php";
+require "/config/cloudinary.php";
 require "api.php";
 
 class ProductGalleryController extends Controller
