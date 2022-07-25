@@ -11,6 +11,9 @@ use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\ProductGalleryRequest;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
+require "cloudinary.php";
+require "api.php";
+
 class ProductGalleryController extends Controller
 {
     /**
@@ -137,8 +140,7 @@ class ProductGalleryController extends Controller
      */
     public function destroy(ProductGallery $gallery)
     {
-        require "cloudinary.php";
-        require "api.php";
+        
         $api = new \Cloudinary\Api();
         $gallery = $api->destroy($asset_id)->forceDelete();
 
