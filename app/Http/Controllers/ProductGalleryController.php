@@ -139,8 +139,8 @@ class ProductGalleryController extends Controller
      */
     public function destroy(ProductGallery $gallery)
     {
-        $getid = $gallery->id;
-        $gallery->Cloudinary::destroy($getid);
+        CloudinaryStorage::delete($gallery->url);
+        $gallery->delete();
         $gallery->forceDelete();
 
         return redirect()->route('dashboard.product.gallery.index', $gallery->products_id);
