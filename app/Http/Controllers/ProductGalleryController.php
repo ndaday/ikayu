@@ -86,7 +86,7 @@ class ProductGalleryController extends Controller
 
 
         ProductGallery::create([
-            'products_id' => $product->id,
+            'products_id' => Cloudinary::getPublicId(),
             'url' => $files
         ]);
 
@@ -138,8 +138,7 @@ class ProductGalleryController extends Controller
     public function destroy(ProductGallery $gallery)
     {
 
-        $pulic_id = Cloudinary::getPublicId();
-        $gallery->Cloudinary::destroy($pulic_id);
+        $gallery->Cloudinary::destroy();
 
         return redirect()->route('dashboard.product.gallery.index', $gallery->products_id);
     }
