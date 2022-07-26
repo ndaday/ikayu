@@ -14,7 +14,8 @@
                 },
                 columns: [{
                         data: 'id',
-                        name: 'id'
+                        name: 'id',
+                        width: '5%'
                     },
                     {
                         data: 'url',
