@@ -87,7 +87,7 @@ class ProductGalleryController extends Controller
 
 
         ProductGallery::create([
-            'id' => $publicID,
+            'id' => strval($publicID),
             'products_id' => $product->id,
             'url' => $files
         ]);
