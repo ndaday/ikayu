@@ -139,7 +139,7 @@ class ProductGalleryController extends Controller
      */
     public function destroy(ProductGallery $gallery)
     {
-        $getid = ProductGallery::where('id')->get();
+        $getid = Cloudinary::getPublicId();
         $gallery->Cloudinary::destroy(strval($getid));
         $gallery->forceDelete();
 
