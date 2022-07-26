@@ -92,8 +92,6 @@ class ProductGalleryController extends Controller
             'url' => $files
         ]);
 
-        dd($files);
-
         return redirect()->route('dashboard.product.gallery.index', $product->id);
     }
 
