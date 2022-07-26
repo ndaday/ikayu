@@ -137,8 +137,10 @@ class ProductGalleryController extends Controller
      */
     public function destroy(ProductGallery $gallery)
     {
-        $api = new \Cloudinary\Api();
-        $gallery = $api->destroy($asset_id)->forceDelete();
+        require "cloudinary.php";
+        require "uploader.php";
+        $api = new \Cloudinary\Uploader();
+        $result = $api->destroy('sample', 'resource_type' => 'image');
 
         return redirect()->route('dashboard.product.gallery.index', $gallery->products_id);
     }
