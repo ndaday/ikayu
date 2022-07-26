@@ -82,13 +82,15 @@ class ProductGalleryController extends Controller
         //         ]);
         //     }
         // }
-        $files = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();
+        $files = Cloudinary::upload($request->file('file')->getRealPath())->getPublicId();
 
 
         ProductGallery::create([
             'products_id' => $product->id,
             'url' => $files
         ]);
+
+        dd($files);
 
         return redirect()->route('dashboard.product.gallery.index', $product->id);
     }
@@ -138,7 +140,7 @@ class ProductGalleryController extends Controller
     public function destroy(ProductGallery $gallery)
     {
 
-        $gallery->Cloudinary::destroy(Cloudinary::getPublicId());
+        $gallery->Cloudinary::destroy();
 
         return redirect()->route('dashboard.product.gallery.index', $gallery->products_id);
     }
