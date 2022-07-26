@@ -21,6 +21,7 @@ class ProductGallery extends Model
         'products_id',
         'url'
     ];
+    protected $primaryKey = 'id';
     public $incrementing = false;
 
     public function getUrlAttribute($url)
