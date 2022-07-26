@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateProductGalleriesTable extends Migration
 {
@@ -14,7 +14,7 @@ class CreateProductGalleriesTable extends Migration
     public function up()
     {
         Schema::create('product_galleries', function (Blueprint $table) {
-            $table->id();
+            $table->string('id');
             $table->bigInteger('products_id');
             $table->string('url');
             $table->softDeletes();

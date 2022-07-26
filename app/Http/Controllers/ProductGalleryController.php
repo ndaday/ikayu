@@ -83,7 +83,7 @@ class ProductGalleryController extends Controller
         //     }
         // }
         $files = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();
-        $publicID = strval(Cloudinary::upload($request->file('file')->getRealPath())->getPublicId());
+        $publicID = Cloudinary::upload($request->file('file')->getRealPath())->getPublicId();
 
 
         ProductGallery::create([
