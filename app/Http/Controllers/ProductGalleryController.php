@@ -68,13 +68,19 @@ class ProductGalleryController extends Controller
      */
     public function store(ProductGalleryRequest $request, Product $product)
     {
-        $image  = $request->file('image');
-        $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
 
-        ProductGallery::create([
-            'products_id' => $product->id,
-            'image' => $result
-        ]);
+        $images = $request->file('image');
+
+        if ($request->hasFile('image')) {
+            foreach ($images as $image) {
+                $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
+
+                ProductGallery::create([
+                    'products_id' => $product->id,
+                    'image' => $result
+                ]);
+            }
+        }
 
         return redirect()->route('dashboard.product.gallery.index', $product->id);
     }
