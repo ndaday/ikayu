@@ -142,7 +142,7 @@ class ProductGalleryController extends Controller
     public function destroy(ProductGallery $gallery)
     {
         $publicId = $gallery->id;
-        dd($publicId);
+        // dd($publicId);
         $gallery->Cloudinary::destroyAsync($publicId);
         // $gallery->forceDelete();
 
