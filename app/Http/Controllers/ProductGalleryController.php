@@ -146,6 +146,6 @@ class ProductGalleryController extends Controller
         $gallery = Cloudinary::destroy($publicId);
         // $gallery->forceDelete();
 
-        return redirect()->route('dashboard.product.gallery.index', $gallery->products_id);
+        return redirect()->route('dashboard.product.gallery.index');
     }
 }
