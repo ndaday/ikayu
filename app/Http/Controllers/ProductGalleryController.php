@@ -92,7 +92,7 @@ class ProductGalleryController extends Controller
             'url' => $files
         ]);
 
-        dd($publicID);
+        // dd($publicID);
 
         return redirect()->route('dashboard.product.gallery.index', $product->id);
     }
@@ -142,7 +142,7 @@ class ProductGalleryController extends Controller
     public function destroy(ProductGallery $gallery)
     {
         $publicId = $gallery->id;
-        // dd($publicId);
+        // var_dump($publicId);
         $gallery->Cloudinary::destroy($publicId);
         // $gallery->forceDelete();
 
