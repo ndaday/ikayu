@@ -19,10 +19,9 @@ class ProductGallery extends Model
     protected $fillable = [
         'id',
         'products_id',
-        'url'
+        'image'
     ];
-    protected $primaryKey = 'id';
-    public $incrementing = false;
+    protected $guarded = [];
 
     public function getUrlAttribute($url)
     {

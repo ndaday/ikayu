@@ -33,13 +33,13 @@ class ProductGalleryController extends Controller
                             ' . method_field('delete') . csrf_field() . '
                         </form>';
                 })
-                ->editColumn('url', function ($item) {
-                    return '<img style="max-width: 150px;" src="' . $item->url . '"/>';
+                ->editColumn('image', function ($item) {
+                    return '<img style="max-width: 150px;" src="' . $item->image . '"/>';
                 })
                 ->editColumn('is_featured', function ($item) {
                     return $item->is_featured ? 'Yes' : 'No';
                 })
-                ->rawColumns(['action', 'url'])
+                ->rawColumns(['action', 'image'])
                 ->make();
         }
 
@@ -71,28 +71,13 @@ class ProductGalleryController extends Controller
      */
     public function store(ProductGalleryRequest $request, Product $product)
     {
-        // $files = $request->file('files');
-
-        // if ($request->hasFile('files')) {
-        //     foreach ($files as $file) {
-        //         $path = $file->store('public/gallery');
-        //         ProductGallery::create([
-        //             'products_id' => $product->id,
-        //             'url' => $path
-        //         ]);
-        //     }
-        // }
-        $files = Cloudinary::upload($request->file('file')->getRealPath())->getSecurePath();
-        $publicID = Cloudinary::getPublicId();
-
+        $image  = $request->file('image');
+        $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
 
         ProductGallery::create([
-            'id' => $publicID,
             'products_id' => $product->id,
-            'url' => $files
+            'image' => $result
         ]);
-
-        // dd($publicID);
 
         return redirect()->route('dashboard.product.gallery.index', $product->id);
     }
@@ -141,10 +126,8 @@ class ProductGalleryController extends Controller
      */
     public function destroy(ProductGallery $gallery)
     {
-        $publicId = $gallery->id;
-        // var_dump($publicId);
-        $gallery->Cloudinary::destroy($publicId);
-        // $gallery->forceDelete();
+        CloudinaryStorage::delete($gallery->image);
+        $gallery->delete();
 
         return redirect()->route('dashboard.product.gallery.index', $gallery->products_id);
     }
