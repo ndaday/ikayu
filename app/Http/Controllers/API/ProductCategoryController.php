@@ -12,7 +12,7 @@ class ProductCategoryController extends Controller
     public function all(Request $request)
     {
         $id = $request->input('id');
-        $limit = $request->input('limit', 5);
+        $limit = $request->input('limit', 10);
         $name = $request->input('name');
         $show_product = $request->input('show_product');
 
