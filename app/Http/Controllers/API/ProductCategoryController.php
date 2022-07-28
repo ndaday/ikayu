@@ -33,10 +33,9 @@ class ProductCategoryController extends Controller
             }
         }
 
-        $category = ProductCategory::query();
-
+        $category = ProductCategory::query()->with(['products']);
         if ($name) {
-            $category->where('name', 'like', '%', $name, '%');
+            $category->where('name', 'like', "%{$name}%");
         }
         if ($show_product) {
             $category->with('products');

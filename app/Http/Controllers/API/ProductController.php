@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Helpers\ResponseFormatter;
-use App\Http\Controllers\Controller;
+use Exception;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Helpers\ResponseFormatter;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -61,5 +62,27 @@ class ProductController extends Controller
             $product->paginate($limit),
             'Data produk berhasil diambil'
         );
+    }
+
+    public function addProduct(Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'name' => 'required',
+                'price' => 'required',
+                'description' => 'required',
+                'tag' => 'nullable',
+                'categories_id' => 'required',
+            ]);
+
+            $product = Product::create($data);
+
+            return ResponseFormatter::success([$product, 'Product berhasil ditambahkan']);
+        } catch (Exception $error) {
+            return ResponseFormatter::error([
+                'message' => 'Something went wrong',
+                'error' => $error,
+            ], 'Authentication Failed', 500);
+        }
     }
 }
