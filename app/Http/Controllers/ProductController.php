@@ -23,6 +23,7 @@ class ProductController extends Controller
             $query = Product::with('category');
 
             return DataTables::of($query)
+                ->addIndexColumn()
                 ->addColumn('action', function ($item) {
                     return '
                         <a class="inline-block border border-blue-700 bg-blue-700 text-white rounded-md px-2 py-1 m-1 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline" 
@@ -44,7 +45,7 @@ class ProductController extends Controller
                     return number_format($item->price);
                 })
                 ->rawColumns(['action'])
-                ->make();
+                ->make(true);
         }
 
         return view('pages.dashboard.product.index');

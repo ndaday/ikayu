@@ -24,6 +24,7 @@ class ProductGalleryController extends Controller
             $query = ProductGallery::where('products_id', $product->id);
 
             return DataTables::of($query)
+                ->addIndexColumn()
                 ->addColumn('action', function ($item) {
                     return '
                         <form class="inline-block" action="' . route('dashboard.gallery.destroy', $item->id) . '" method="POST">
@@ -40,7 +41,7 @@ class ProductGalleryController extends Controller
                     return $item->is_featured ? 'Yes' : 'No';
                 })
                 ->rawColumns(['action', 'image'])
-                ->make();
+                ->make(true);
         }
 
         return view('pages.dashboard.gallery.index', compact('product'));

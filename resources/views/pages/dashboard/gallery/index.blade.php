@@ -13,8 +13,9 @@
                     url: '{!! url()->current() !!}',
                 },
                 columns: [{
-                        data: 'id',
-                        name: 'id',
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        searchable: false,
                         width: '5%'
                     },
                     {
@@ -45,7 +46,7 @@
                     <table id="crudTable">
                         <thead>
                             <tr>
-                                <th class="px-2 py-4">ID</th>
+                                <th class="px-2 py-4">No</th>
                                 <th class="px-6 py-4">Photo</th>
                                 <th class="px-6 py-4">Action</th>
                             </tr>

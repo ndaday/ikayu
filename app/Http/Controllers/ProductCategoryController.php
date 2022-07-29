@@ -22,6 +22,8 @@ class ProductCategoryController extends Controller
             $query = ProductCategory::query();
 
             return DataTables::of($query)
+                ->addIndexColumn()
+
                 ->addColumn('action', function ($item) {
                     return '
                         <a class="inline-block border border-gray-700 bg-gray-700 text-white rounded-md px-2 py-1 m-1 transition duration-500 ease select-none hover:bg-gray-800 focus:outline-none focus:shadow-outline" 
@@ -35,11 +37,8 @@ class ProductCategoryController extends Controller
                             ' . method_field('delete') . csrf_field() . '
                         </form>';
                 })
-                ->editColumn('price', function ($item) {
-                    return number_format($item->price);
-                })
                 ->rawColumns(['action'])
-                ->make();
+                ->make(true);
         }
 
         return view('pages.dashboard.category.index');

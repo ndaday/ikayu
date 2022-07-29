@@ -21,6 +21,7 @@ class TransactionController extends Controller
             $query = Transaction::with(['user']);
 
             return DataTables::of($query)
+                ->addIndexColumn()
                 ->addColumn('action', function ($item) {
                     return '
                         <a class="inline-block border border-blue-700 bg-blue-700 text-white rounded-md px-2 py-1 m-1 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline" 
@@ -36,7 +37,7 @@ class TransactionController extends Controller
                     return number_format($item->total_price);
                 })
                 ->rawColumns(['action'])
-                ->make();
+                ->make(true);
         }
 
         return view('pages.dashboard.transaction.index');
@@ -75,10 +76,11 @@ class TransactionController extends Controller
             $query = TransactionItem::with(['product'])->where('transactions_id', $transaction->id);
 
             return DataTables::of($query)
+                ->addIndexColumn()
                 ->editColumn('product.price', function ($item) {
                     return number_format($item->product->price);
                 })
-                ->make();
+                ->make(true);
         }
 
         return view('pages.dashboard.transaction.show', compact('transaction'));
@@ -92,7 +94,7 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        return view('pages.dashboard.transaction.edit',[
+        return view('pages.dashboard.transaction.edit', [
             'item' => $transaction
         ]);
     }
