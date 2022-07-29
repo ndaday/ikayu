@@ -51,7 +51,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Total Harga</th>
+                                <th class="text-right">Total Harga</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>

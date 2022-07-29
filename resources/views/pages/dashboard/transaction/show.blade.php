@@ -90,7 +90,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Produk</th>
-                                <th>Harga</th>
+                                <th class="text-right">Harga</th>
                                 <th>Qty</th>
                             </tr>
                         </thead>
