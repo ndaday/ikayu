@@ -15,6 +15,7 @@
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
+                        className: "text-center",
                         searchable: false,
                         width: '5%'
                     },
@@ -28,11 +29,13 @@
                     },
                     {
                         data: 'price',
-                        name: 'price'
+                        name: 'price',
+                        className: "text-right"
                     },
                     {
                         data: 'action',
                         name: 'action',
+                        className: "text-center",
                         orderable: false,
                         searchable: false,
                         width: '25%'
@@ -57,7 +60,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Kategori</th>
-                                <th class="text-right">Harga</th>
+                                <th>Harga</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

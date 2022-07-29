@@ -15,6 +15,7 @@
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
+                        className: "text-center",
                         searchable: false,
                         width: '5%'
                     },
@@ -25,6 +26,7 @@
                     {
                         data: 'action',
                         name: 'action',
+                        className: "text-center",
                         orderable: false,
                         searchable: false,
                         width: '25%'

@@ -15,6 +15,7 @@
                 columns: [{
                         data: 'id',
                         name: 'id',
+                        className: "text-center",
                         width: '5%'
                     },
                     {
@@ -32,6 +33,7 @@
                     {
                         data: 'action',
                         name: 'action',
+                        className: "text-center",
                         orderable: false,
                         searchable: false,
                         width: '25%'

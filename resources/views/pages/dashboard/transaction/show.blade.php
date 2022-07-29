@@ -15,6 +15,7 @@
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
+                        className: "text-center",
                         searchable: false,
                         orderable: false,
                         width: '5%'
@@ -27,12 +28,14 @@
                     {
                         data: 'product.price',
                         name: 'product.price',
+                        className: "text-right",
                         searchable: false,
                         orderable: false,
                     },
                     {
                         data: 'quantity',
                         name: 'quantity',
+                        className: "text-center",
                         searchable: false,
                         orderable: false,
                     },
@@ -90,7 +93,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Produk</th>
-                                <th class="text-right">Harga</th>
+                                <th>Harga</th>
                                 <th>Qty</th>
                             </tr>
                         </thead>
