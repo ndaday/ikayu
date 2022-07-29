@@ -42,7 +42,7 @@ class ProductController extends Controller
                         </form>';
                 })
                 ->editColumn('price', function ($item) {
-                    return number_format($item->price);
+                    return 'Rp. ' . number_format($item->price, 0, ',', '.');
                 })
                 ->rawColumns(['action'])
                 ->make(true);

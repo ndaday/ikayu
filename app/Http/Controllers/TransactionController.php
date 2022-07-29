@@ -34,7 +34,7 @@ class TransactionController extends Controller
                         </a>';
                 })
                 ->editColumn('total_price', function ($item) {
-                    return number_format($item->total_price);
+                    return 'Rp. ' . number_format($item->total_price, 0, ',', '.');
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -78,7 +78,7 @@ class TransactionController extends Controller
             return DataTables::of($query)
                 ->addIndexColumn()
                 ->editColumn('product.price', function ($item) {
-                    return number_format($item->product->price);
+                    return 'Rp. ' . number_format($item->product->price, 0, ',', '.');
                 })
                 ->make(true);
         }

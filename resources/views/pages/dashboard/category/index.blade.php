@@ -16,7 +16,6 @@
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
                         searchable: false,
-                        revertIndexColumn: false,
                         width: '5%'
                     },
                     {
@@ -44,7 +43,7 @@
             </div>
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
-                    <table id="crudTable">
+                    <table id="crudTable" class="cell-border border-collapse" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>

@@ -43,7 +43,7 @@
             </div>
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
-                    <table id="crudTable">
+                    <table id="crudTable" class="cell-border border-collapse" style="width:100%">
                         <thead>
                             <tr>
                                 <th class="px-2 py-4">No</th>
