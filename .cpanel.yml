@@ -1,5 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/wikinote/public_html/
-    - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYPATH=/home/wikinote/api.wikinote.my.id/
+    - /bin/cp -r ./public/* $DEPLOYPATH
+    - /bin/cp ./public/js/* $DEPLOYPATH/js
+    - /bin/cp ./public/css/* $DEPLOYPATH/css
