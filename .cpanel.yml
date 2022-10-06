@@ -2,5 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/wikinote/public_html/
-    - /bin/cp -Rf ./public/* $DEPLOYPATH
-    - /bin/cp -Rf ./public/.htaccess $DEPLOYPATH
+    - /bin/cp -r ./public/* $DEPLOYPATH
